@@ -1,0 +1,172 @@
+﻿@model List<ProjeDB.DBO.EmployeeLoginModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["Check"].ToString() != "User")
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<aside class="profile-info col-lg-12">
+    <div class="row">
+
+        <section class="panel">
+            <header class="panel-heading">
+                <h1>Login Employees</h1>
+            </header>
+            <div class="panel-body">
+                <div class="adv-table">
+
+                    <table border="0" class="display table table-bordered" id="hidden-table-info1">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Shift</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                foreach (var item2 in item.SNameDate)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Employeename
+
+                                        </td>
+                                        <td>
+                                            @item2.Date
+
+                                        </td>
+                                        <td>
+                                            @item2.SName
+
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</aside>
+
+
+@section UserName
+{
+    @Session["UserName"] @Session["UserSurname"]
+
+}
+
+@section css
+{
+    <link href="../../Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../Content/css/bootstrap-reset.css" rel="stylesheet">
+    <link href="../../Content/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../../Content/assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet">
+    <link href="../../Content/assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet">
+    <link href="../../Content/css/style.css" rel="stylesheet">
+
+}
+
+
+@section sidebarLi
+{
+
+    <li>
+        <a href="/User/Index">
+            <i class="icon-group"></i>
+            <span>Employees</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/User/Property" class="dcjq-parent">
+            <i class="icon-cogs"></i>
+            <span>CompanyProperty</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/Announcement/Index" class="dcjq-parent">
+            <i class="icon-bell-alt"></i>
+            <span>Announcement</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/CardReader/Index" class="dcjq-parent">
+            <i class="icon-credit-card"></i>
+            <span>CardReader</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/UserClaim/Index" class="dcjq-parent">
+            <i class="icon-check"></i>
+            <span>Claim</span>s
+        </a>
+
+    </li>
+<li class="sub-menu dcjq-parent-li">
+    <a href="/EmployeesLog/Index" class="dcjq-parent">
+        <i class="icon-unlock"></i>
+        <span>Login</span>
+    </a>
+
+</li>
+
+
+}
+
+
+
+
+
+@section CompanyName
+{
+    @Session["CompanyName"]
+}
+
+@section script
+{
+    <script src="../../content/js/jquery.scrollto.min.js"></script>
+    <script src="../../content/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="../../Content/js/respond.min.js"></script>
+    <script type="text/javascript" language="javascript" src="../../Content/assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    <script src="../../Content/js/common-scripts.js"></script>
+    <script class="include" type="text/javascript" src="../../Content/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script type="text/javascript">
+    /* Formating function for row details */
+
+
+
+    $(document).ready(function () {
+
+        var oTable = $('#hidden-table-info1').dataTable({
+            "aoColumnDefs": [
+                { "bSortable": false, "aTargets": [0] }
+            ],
+            "aaSorting": [[1, 'asc']]
+        });
+
+
+    });
+    </script>
+
+}
+
+

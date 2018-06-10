@@ -1,0 +1,459 @@
+﻿@model MVCProje.Models.PropertyModel
+@{
+    ViewBag.Title = "Property";
+    if (Session["Check"].ToString() != "User")
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+@using ProjeDB
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Property
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal" id="default">
+                    <fieldset title="Step 2" class="step" id="default-step-1" style="display: block;">
+                        <legend> </legend>
+                        <div class="form-group">
+
+                            <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Type</label>
+                            <div class="col-lg-10">
+                                <select class="form-control m-bot15" id="_type" onchange="getChoose(this.value)">
+
+                                    <option id="Shift">Shift</option>
+                                    <option id="Announcement">Announcement</option>
+
+                                </select>
+                            </div>
+
+
+                            <div id="content">
+
+
+                            </div>
+
+
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <section class="panel">
+        <header class="panel-heading">
+            <h1>Shift Type</h1>
+        </header>
+        <div class="panel-body">
+            <div class="adv-table">
+                    <table border="0" class="display table table-bordered" id="hidden-table-info1">
+                        <thead>
+                            <tr>
+                                <th>ShiftName</th>
+                                <th>Price</th>
+                                <th>Reader Name</th>
+                                <th>Delete Shift</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ShiftList)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Price</td>
+                                    <td>@item.CardName</td>
+                                    <th><a href="javascript:DelShift(@item.Id)">Delete</a></th>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="row">
+
+    <section class="panel">
+        <header class="panel-heading">
+            <h1>Announcement Type</h1>
+        </header>
+        <div class="panel-body">
+            <div class="adv-table">
+                <table border="0" class="display table table-bordered" id="hidden-table-info2">
+                    <thead>
+                        <tr>
+                            <th>Announcement Name</th>
+                            <th>Delete</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.AnnList)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td><a href="javascript:DelAnn(@item.Id)">Delete</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+
+
+
+
+
+@section script{
+    <script>
+
+
+
+        function checkCardname() {
+
+            $.ajax
+                ({
+                    url: "/User/ReadCardName",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json',
+                    processData: false,
+                    success: function (data) {
+                        $('#card').val(data)
+                    }
+
+                });
+        }
+
+
+
+        function DelShift(id) {
+            var data = {
+                _id: id
+            };
+
+            $.ajax
+                ({
+                    url: "/User/DelShift",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    processData: false,
+                    success: window.location.assign("/User/Property")
+
+
+                }
+                );
+        }
+
+        function DelAnn(_id)
+        {
+            var data = {
+                id: _id
+            };
+
+            $.ajax
+                ({
+                    url: "/User/DelAnn",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    processData: false,
+                    success: window.location.assign("/User/Property")
+
+
+                }
+                );
+
+        }
+
+
+
+        function addShift()
+        {
+            var data = {
+                name: $('#name').val(),
+                price: $('#price').val(),
+                cardname: $('#card').val()
+            };
+
+            $.ajax
+                ({
+                    url: "/User/AddShift",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    processData: false,
+                    success: window.location.assign("/User/Property")
+
+
+                }
+                );
+
+        }
+        function addAnn() {
+            var data = {
+                name: $('#name').val()
+            };
+
+            $.ajax
+                ({
+                    url: "/User/AddAnn",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    processData: false,
+                    success: window.location.assign("/User/Property")
+
+
+                }
+                );
+
+        }
+
+        function getChoose(selectedtype) {
+            if (selectedtype == "Shift") {
+                $.ajax({
+                    url: '@Url.Action("returnAddShift", "User")',
+             type: 'POST',
+             dataType: 'html',
+             data: {},
+             success: function (data) {
+                  $("#content").html(null);
+                 $("#content").html(data);
+
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+            }
+            if (selectedtype == "Announcement")
+                {
+            $.ajax({
+                url: '@Url.Action("returnAddAnn", "User")',
+             type: 'POST',
+             dataType: 'html',
+             data: {},
+             success: function (data) {
+                 $("#content").html(null);
+                 $("#content").html(data);
+
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+            }
+        }
+
+
+        getChoose("Shift")
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="../../content/js/jquery.scrollto.min.js"></script>
+<script src="../../content/js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="../../Content/js/respond.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../Content/assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+<script src="../../Content/js/common-scripts.js"></script>
+
+<script class="include" type="text/javascript" src="../../Content/js/jquery.dcjqaccordion.2.7.js"></script>
+
+
+
+<!--this page plugins-->
+<script type="text/javascript" src="../../Content/assets/fuelux/js/spinner.min.js"></script>
+<script type="text/javascript" src="../../Content/assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="../../Content/assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+<script type="text/javascript" src="../../Content/assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+<script type="text/javascript" src="../../Content/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../../Content/assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../../Content/assets/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="../../Content/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="../../Content/assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="../../Content/assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<script type="text/javascript" src="../../Content/assets/jquery-multi-select/js/jquery.multi-select.js"></script>
+<script type="text/javascript" src="../../Content/assets/jquery-multi-select/js/jquery.quicksearch.js"></script>
+<!--common script for all pages-->
+<script src="../../Content/js/common-scripts.js"></script>
+<!--this page  script only-->
+<script src="../../Content/js/advanced-form-components.js"></script>
+<script type="text/javascript">
+            /* Formating function for row details */
+
+
+            $(document).ready(function () {
+
+                var oTable = $('#hidden-table-info2').dataTable({
+                    "aoColumnDefs": [
+                        { "bSortable": false, "aTargets": [0] }
+                    ],
+                    "aaSorting": [[1, 'asc']]
+                });
+
+
+            });
+</script>
+<script type="text/javascript">
+            /* Formating function for row details */
+
+
+            $(document).ready(function () {
+
+                var oTable = $('#hidden-table-info1').dataTable({
+                    "aoColumnDefs": [
+                        { "bSortable": false, "aTargets": [0] }
+                    ],
+                    "aaSorting": [[1, 'asc']]
+                });
+
+
+            });
+</script>
+
+<script src="../../content/js/jquery.scrollto.min.js"></script>
+<script src="../../content/js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="../../Content/js/respond.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../Content/assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+<script src="../../Content/js/common-scripts.js"></script>
+<script class="include" type="text/javascript" src="../../Content/js/jquery.dcjqaccordion.2.7.js"></script>
+
+
+}
+
+
+@section css
+{
+
+    <link href="../../Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../Content/css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="../../Content/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../../Content/assets/bootstrap-fileupload/bootstrap-fileupload.css" />
+    <link rel="stylesheet" type="text/css" href="../../Content/assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" type="text/css" href="../../Content/assets/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="../../Content/assets/bootstrap-timepicker/compiled/timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="../../Content/assets/bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="../../Content/assets/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+    <link rel="stylesheet" type="text/css" href="../../Content/assets/bootstrap-datetimepicker/css/datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="../../Content/assets/jquery-multi-select/css/multi-select.css" />
+
+    <link href="../../Content/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../../Content/assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet">
+    <link href="../../Content/assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet">
+    <link href="../../Content/css/style.css" rel="stylesheet">
+
+
+
+
+}
+
+@section CompanyName
+{
+    @Session["CompanyName"]
+}
+
+@section UserName
+{
+    @Session["UserName"] @Session["UserSurname"]
+
+}
+
+
+
+
+@section sidebarLi
+{
+
+    <li>
+        <a href="/User/Index">
+            <i class="icon-group"></i>
+            <span>Employees</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/User/Property" class="dcjq-parent">
+            <i class="icon-cogs"></i>
+            <span>CompanyProperty</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/Announcement/Index" class="dcjq-parent">
+            <i class="icon-bell-alt"></i>
+            <span>Announcement</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/CardReader/Index" class="dcjq-parent">
+            <i class="icon-credit-card"></i>
+            <span>CardReader</span>s
+        </a>
+
+    </li>
+<li class="sub-menu dcjq-parent-li">
+    <a href="/UserClaim/Index" class="dcjq-parent">
+        <i class="icon-check"></i>
+        <span>Claim</span>s
+    </a>
+
+</li>
+
+<li class="sub-menu dcjq-parent-li">
+    <a href="/EmployeesLog/Index" class="dcjq-parent">
+        <i class="icon-unlock"></i>
+        <span>Login</span>
+    </a>
+
+</li>
+
+}
+

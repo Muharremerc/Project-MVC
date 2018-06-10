@@ -1,0 +1,74 @@
+﻿@using ProjeDB
+@model List<EmployeeClaim>
+
+
+
+<div class="row">
+
+    <section class="panel">
+        <header class="panel-heading">
+            <h1>Claim</h1>
+        </header>
+        <div class="panel-body">
+            <div class="adv-table">
+                <table border="0" class="display table table-bordered" id="tableList">
+                    <thead>
+                        <tr>
+                            <th>Claim Type</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            foreach (var item2 in item.ClaimOthers)
+                            {
+                                <tr>
+                                    <td>@item2.EmployeeClaim.ClaimType.Name</td>
+                                    <td>@item2.Details</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<div class="row">
+
+    <section class="panel">
+        <header class="panel-heading"></header>
+        <div class="panel-body">
+            <div class="adv-table">
+                <table border="0" class="display table table-bordered" id="tableList2">
+                    <thead>
+                        <tr>
+                            <th>Claim Type</th>
+                            <th>Start</th>
+                            <th>Finish</th>
+                            <th>Accept</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            foreach (var item2 in item.ClaimHolidays)
+                            {
+                                <tr>
+                                    <td>@item2.EmployeeClaim.ClaimType.Name</td>
+                                    <td>@item2.StartDate</td>
+                                    <td>@item2.FinishDate</td>
+                                    <td>@item2.Accept</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+

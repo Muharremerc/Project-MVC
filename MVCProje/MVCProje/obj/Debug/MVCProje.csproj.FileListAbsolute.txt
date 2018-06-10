@@ -1,0 +1,55 @@
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\obj\Debug\MVCProje.csprojResolveAssemblyReference.cache
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\obj\Debug\MVCProje.csproj.CoreCompileInputs.cache
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\MVCProje.dll.config
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\MVCProje.dll
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\MVCProje.pdb
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\System.Web.Helpers.dll
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\System.Web.Mvc.dll
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\System.Web.Razor.dll
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\System.Web.Webpages.dll
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\System.Web.Webpages.Razor.dll
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\System.Web.Razor.xml
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\System.Web.Webpages.xml
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\System.Web.Webpages.Razor.xml
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\System.Web.Helpers.xml
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\System.Web.Mvc.xml
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\obj\Debug\MVCProje.dll
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\obj\Debug\MVCProje.pdb
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\EntityFramework.dll
+C:\Users\Muharrem\Desktop\Proje\MVCProje\MVCProje\bin\EntityFramework.xml
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\obj\Debug\MVCProje.csprojResolveAssemblyReference.cache
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\obj\Debug\MVCProje.csproj.CoreCompileInputs.cache
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\obj\Debug\MVCProje.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\obj\Debug\MVCProje.pdb
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\MVCProje.dll.config
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\MVCProje.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\MVCProje.pdb
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\EntityFramework.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\EntityFramework.SqlServer.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\ProjeDB.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\System.Web.Helpers.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\System.Web.Mvc.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\System.Web.Razor.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\System.Web.Webpages.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\System.Web.Webpages.Razor.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\ProjeDB.pdb
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\ProjeDB.dll.config
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\EntityFramework.xml
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\EntityFramework.SqlServer.xml
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\System.Web.Razor.xml
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\System.Web.Webpages.xml
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\System.Web.Webpages.Razor.xml
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\System.Web.Helpers.xml
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\System.Web.Mvc.xml
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\RFID.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\MVCProje\bin\RFID.pdb

@@ -1,0 +1,37 @@
+﻿@using ProjeDB
+@model List<LoginEmployee>
+
+
+
+<div class="row">
+
+    <section class="panel">
+        <header class="panel-heading">
+            <h1>Claim</h1>
+        </header>
+        <div class="panel-body">
+            <div class="adv-table">
+                <table border="0" class="display table table-bordered" id="tableList">
+                    <thead>
+                        <tr>
+                            <th>Shift Name</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                           
+                                <tr>
+                                    <td>@item.Shiftname</td>
+                                    <td>@item.Date</td>
+                                </tr>
+                            
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+

@@ -1,0 +1,5 @@
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\RFID\bin\Debug\RFID.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\RFID\bin\Debug\RFID.pdb
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\RFID\obj\Debug\RFID.csproj.CoreCompileInputs.cache
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\RFID\obj\Debug\RFID.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\RFID\obj\Debug\RFID.pdb

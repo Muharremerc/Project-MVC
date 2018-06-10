@@ -1,0 +1,282 @@
+﻿@model MVCProje.Models.AnnouncementsModel
+@{
+    ViewBag.Title = "Index";
+    if (Session["Check"].ToString() != "User")
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Announcements
+                </header>
+                <div class="panel-body">
+                    <form class="form-horizontal" id="default">
+                        <fieldset  title="Step 2" class="step" id="default-step-1" style="display: block;">
+                            <legend> </legend>
+                            <div class="form-group">
+
+
+                                <label class="col-lg-2 control-label">Title</label>
+                                <div class="col-lg-10" style="padding-bottom:15px">
+                                    <input type="text" class="form-control" cols="20" rows="15" id="_title" />
+                                </div>
+
+                                <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Type</label>
+                                <div class="col-lg-10">
+                                    <select class="form-control m-bot15" id="_type">
+
+                                        @foreach (var item2 in ViewBag.La)
+                                        {
+                                            foreach (var item3 in item2.CompanyAnnouncements)
+                                            {
+
+                                                <option id="@item3.Announcement.Id">@item3.Announcement.Name</option>
+                                            }
+
+                                        }
+                                    </select>
+                                </div>
+                            
+
+                                <label class="col-lg-2 control-label">Details</label>
+                                <div class="col-lg-10">
+                                    <textarea class="form-control" cols="60" rows="5" id="_textArea" name="deneme"></textarea>
+                                </div>
+                            </div>
+
+                            <p id="default-buttons-1" class="default-buttons">
+                                    
+                                    <a id="button_2" href="javascript:AddAnn();" class="button-back  btn btn-info" >Save</a>
+                             </p>
+                        </fieldset>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <section class="panel">
+            <header class="panel-heading"></header>
+            <div class="panel-body">
+                <div class="adv-table">
+                    <table border="0" class="display table table-bordered" id="hidden-table-info1">
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Details</th>
+                                <th>Title</th>
+                                <th>Design</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>                          
+                           @foreach (var item in ViewBag.comb)
+                           {
+                               foreach (var item2 in item.DetailsAndTitle)
+                               {
+                                <tr>
+                                    
+                                    <td>@item.UserName.Name</td>
+                                    <td>@item2.Details</td>
+                                    <td>@item2.Title</td>
+                                    <td width="25px"><a href="javascript:DelAnn();">Delete</a></td>
+                                </tr>
+
+                               }
+                           }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+
+@section script{
+    <script>
+
+        function DelAnn()
+        {
+            var data = {
+                _id: $('#delId').val()
+            };
+            
+            $.ajax
+                ({
+                    url: "/Announcement/DeleteAnnouncements",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    processData: false,
+                    success: window.location.assign("/Announcement")
+                    
+
+                }
+                );
+        }
+
+
+        function AddAnn()
+        {
+            
+            var data = {
+                _type: $('#_type').val(),
+                _textArea: $('#_textArea').val(),
+                _title: $('#_title').val()
+            };
+            if (data._textArea != "" || data._title != "") {
+            $.ajax
+                ({
+                    url: "/Announcement/AddAnnouncements",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    processData: false,
+                    success: window.location.assign("/Announcement")
+                    
+                }
+                
+           );
+            }
+            else
+            {
+                window.location.assign("/Announcement");
+                alert("hata");
+            }
+        }
+
+
+     
+            
+        
+
+
+    </script>
+
+
+
+
+<script type="text/javascript">
+         /* Formating function for row details */
+
+
+         $(document).ready(function () {
+
+             var oTable = $('#hidden-table-info1').dataTable({
+                 "aoColumnDefs": [
+                     { "bSortable": false, "aTargets": [0] }
+                 ],
+                 "aaSorting": [[1, 'asc']]
+             });
+
+
+         });
+</script>
+
+<script src="../../content/js/jquery.scrollto.min.js"></script>
+<script src="../../content/js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="../../Content/js/respond.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../Content/assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+<script src="../../Content/js/common-scripts.js"></script>
+<script class="include" type="text/javascript" src="../../Content/js/jquery.dcjqaccordion.2.7.js"></script>
+
+
+
+}
+
+
+@section CompanyName
+{
+    @Session["CompanyName"]
+}
+
+@section UserName
+{
+    @Session["UserName"] @Session["UserSurname"]
+
+}
+
+
+
+
+@section css
+{
+    <link href="../../Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../Content/css/bootstrap-reset.css" rel="stylesheet">
+    <link href="../../Content/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../../Content/assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet">
+    <link href="../../Content/assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet">
+    <link href="../../Content/css/style.css" rel="stylesheet">
+
+}
+
+@section sidebarLi
+{
+
+    <li>
+        <a href="/User/Index">
+            <i class="icon-group"></i>
+            <span>Employees</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/User/Property" class="dcjq-parent">
+            <i class="icon-cogs"></i>
+            <span>CompanyProperty</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/Announcement/Index" class="dcjq-parent">
+            <i class="icon-bell-alt"></i>
+            <span>Announcement</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/CardReader/Index" class="dcjq-parent">
+            <i class="icon-credit-card"></i>
+            <span>CardReader</span>s
+        </a>
+
+    </li>
+<li class="sub-menu dcjq-parent-li">
+    <a href="/UserClaim/Index" class="dcjq-parent">
+        <i class="icon-check"></i>
+        <span>Claim</span>s
+    </a>
+
+</li>
+<li class="sub-menu dcjq-parent-li">
+    <a href="/EmployeesLog/Index" class="dcjq-parent">
+        <i class="icon-unlock"></i>
+        <span>Login</span>
+    </a>
+
+</li>
+
+
+}
+

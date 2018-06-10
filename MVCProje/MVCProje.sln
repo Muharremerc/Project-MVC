@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCProje", "MVCProje\MVCProje.csproj", "{2CEDA9FA-F4A1-47F3-A7DF-DD98F05C3A40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjeDB", "ProjeDB\ProjeDB.csproj", "{C5EAD0DA-0610-495D-8705-332E23B04F0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFID", "RFID\RFID.csproj", "{C9BF9D43-883D-4B81-8EDE-326BF8C614B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginApp", "LoginApp\LoginApp.csproj", "{6E45DC4C-CF66-4F26-808A-C3DA55C516E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CEDA9FA-F4A1-47F3-A7DF-DD98F05C3A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CEDA9FA-F4A1-47F3-A7DF-DD98F05C3A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CEDA9FA-F4A1-47F3-A7DF-DD98F05C3A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CEDA9FA-F4A1-47F3-A7DF-DD98F05C3A40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5EAD0DA-0610-495D-8705-332E23B04F0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5EAD0DA-0610-495D-8705-332E23B04F0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5EAD0DA-0610-495D-8705-332E23B04F0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5EAD0DA-0610-495D-8705-332E23B04F0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9BF9D43-883D-4B81-8EDE-326BF8C614B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9BF9D43-883D-4B81-8EDE-326BF8C614B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9BF9D43-883D-4B81-8EDE-326BF8C614B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9BF9D43-883D-4B81-8EDE-326BF8C614B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E45DC4C-CF66-4F26-808A-C3DA55C516E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E45DC4C-CF66-4F26-808A-C3DA55C516E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E45DC4C-CF66-4F26-808A-C3DA55C516E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E45DC4C-CF66-4F26-808A-C3DA55C516E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3BAC09A-92C4-4452-9E17-59F904790DB5}
+	EndGlobalSection
+EndGlobal

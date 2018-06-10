@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="ReturnClaimHolidayTable_Result">
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CardNumber" Type="Int32" />
+    <Property Name="IzinTürü" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="ReturnClaimOtherTable_Result">
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CardNumber" Type="Int32" />
+    <Property Name="IzinTürü" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="ReturnEmployeAllWorkByCardId_Result">
+    <Property Name="NameSurname" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Name="CardNumber" Type="Int32" />
+    <Property Name="ShiftName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Start" Type="DateTime" />
+    <Property Name="Finish" Type="DateTime" />
+  </ComplexType>
+  <ComplexType Name="ReturnEmployeeMoney_Result">
+    <Property Name="NameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CardId" Type="Int32" />
+    <Property Name="ShiftName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Moneyy" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="ReturnEmployeeTableByUserId_Result">
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CardNumber" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <EntityType Name="Announcement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserAnnouncements" Relationship="Self.FK_UserAnnouncement_Announcement" FromRole="Announcement" ToRole="UserAnnouncement" />
+  </EntityType>
+  <EntityType Name="ClaimHoliday">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeClaimId" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="FinishDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EmployeeClaim" Relationship="Self.FK_ClaimHoliday_EmployeeClaim" FromRole="ClaimHoliday" ToRole="EmployeeClaim" />
+  </EntityType>
+  <EntityType Name="ClaimOther">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeClaimId" Type="Int32" />
+    <Property Name="Details" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EmployeeClaim" Relationship="Self.FK_ClaimOther_EmployeeClaim1" FromRole="ClaimOther" ToRole="EmployeeClaim" />
+  </EntityType>
+  <EntityType Name="ClaimType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EmployeeClaims" Relationship="Self.FK_EmployeeClaim_Claim" FromRole="ClaimType" ToRole="EmployeeClaim" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CompanyShifts" Relationship="Self.FK_CompanyShift_Company1" FromRole="Company" ToRole="CompanyShift" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Company" FromRole="Company" ToRole="Employee" />
+    <NavigationProperty Name="UserCompanies" Relationship="Self.FK_UserCompany_Company" FromRole="Company" ToRole="UserCompany" />
+  </EntityType>
+  <EntityType Name="CompanyShift">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="ShiftId" Type="Int32" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_CompanyShift_Company1" FromRole="CompanyShift" ToRole="Company" />
+    <NavigationProperty Name="Shift" Relationship="Self.FK_CompanyShift_Shift1" FromRole="CompanyShift" ToRole="Shift" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="CardNumber" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_Employee_Company" FromRole="Employee" ToRole="Company" />
+    <NavigationProperty Name="Company1" Relationship="Self.FK_Employee_CompanyUser" FromRole="Employee" ToRole="Company" />
+    <NavigationProperty Name="EmployeeClaims" Relationship="Self.FK_EmployeeClaim_Employee1" FromRole="Employee" ToRole="EmployeeClaim" />
+    <NavigationProperty Name="EmployeeShifts" Relationship="Self.FK_EmployeeShift_Employee" FromRole="Employee" ToRole="EmployeeShift" />
+  </EntityType>
+  <EntityType Name="EmployeeClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClaimTypeId" Type="Int32" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <NavigationProperty Name="ClaimHolidays" Relationship="Self.FK_ClaimHoliday_EmployeeClaim" FromRole="EmployeeClaim" ToRole="ClaimHoliday" />
+    <NavigationProperty Name="ClaimOthers" Relationship="Self.FK_ClaimOther_EmployeeClaim1" FromRole="EmployeeClaim" ToRole="ClaimOther" />
+    <NavigationProperty Name="ClaimType" Relationship="Self.FK_EmployeeClaim_Claim" FromRole="EmployeeClaim" ToRole="ClaimType" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_EmployeeClaim_Employee1" FromRole="EmployeeClaim" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="EmployeeShift">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftId" Type="Int32" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <Property Name="Start" Type="DateTime" Precision="0" />
+    <Property Name="Finish" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_EmployeeShift_Employee" FromRole="EmployeeShift" ToRole="Employee" />
+    <NavigationProperty Name="Shift" Relationship="Self.FK_EmployeeShift_Shift" FromRole="EmployeeShift" ToRole="Shift" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_Role" FromRole="Role" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="Shift">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShiftNumber" Type="Int32" />
+    <NavigationProperty Name="CompanyShifts" Relationship="Self.FK_CompanyShift_Shift1" FromRole="Shift" ToRole="CompanyShift" />
+    <NavigationProperty Name="EmployeeShifts" Relationship="Self.FK_EmployeeShift_Shift" FromRole="Shift" ToRole="EmployeeShift" />
+    <NavigationProperty Name="ShiftPrices" Relationship="Self.FK_ShiftPrice_Shift" FromRole="Shift" ToRole="ShiftPrice" />
+  </EntityType>
+  <EntityType Name="ShiftPrice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftId" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="Shift" Relationship="Self.FK_ShiftPrice_Shift" FromRole="ShiftPrice" ToRole="Shift" />
+  </EntityType>
+  <EntityType Name="UserAnnouncement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AnnouncementId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Details" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Announcement" Relationship="Self.FK_UserAnnouncement_Announcement" FromRole="UserAnnouncement" ToRole="Announcement" />
+    <NavigationProperty Name="Userr" Relationship="Self.FK_UserAnnouncement_User" FromRole="UserAnnouncement" ToRole="Userr" />
+  </EntityType>
+  <EntityType Name="UserCompany">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_UserCompany_Company" FromRole="UserCompany" ToRole="Company" />
+    <NavigationProperty Name="Userr" Relationship="Self.FK_UserCompany_Userr" FromRole="UserCompany" ToRole="Userr" />
+  </EntityType>
+  <EntityType Name="Userr">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserAnnouncements" Relationship="Self.FK_UserAnnouncement_User" FromRole="Userr" ToRole="UserAnnouncement" />
+    <NavigationProperty Name="UserCompanies" Relationship="Self.FK_UserCompany_Userr" FromRole="Userr" ToRole="UserCompany" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_User" FromRole="Userr" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_UserRole_Role" FromRole="UserRole" ToRole="Role" />
+    <NavigationProperty Name="Userr" Relationship="Self.FK_UserRole_User" FromRole="UserRole" ToRole="Userr" />
+  </EntityType>
+  <Association Name="FK_UserAnnouncement_Announcement">
+    <End Role="Announcement" Type="Self.Announcement" Multiplicity="0..1" />
+    <End Role="UserAnnouncement" Type="Self.UserAnnouncement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Announcement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserAnnouncement">
+        <PropertyRef Name="AnnouncementId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClaimHoliday_EmployeeClaim">
+    <End Role="EmployeeClaim" Type="Self.EmployeeClaim" Multiplicity="0..1" />
+    <End Role="ClaimHoliday" Type="Self.ClaimHoliday" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeClaim">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClaimHoliday">
+        <PropertyRef Name="EmployeeClaimId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClaimOther_EmployeeClaim1">
+    <End Role="EmployeeClaim" Type="Self.EmployeeClaim" Multiplicity="0..1" />
+    <End Role="ClaimOther" Type="Self.ClaimOther" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeClaim">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClaimOther">
+        <PropertyRef Name="EmployeeClaimId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeClaim_Claim">
+    <End Role="ClaimType" Type="Self.ClaimType" Multiplicity="0..1" />
+    <End Role="EmployeeClaim" Type="Self.EmployeeClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClaimType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeClaim">
+        <PropertyRef Name="ClaimTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyShift_Company1">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="CompanyShift" Type="Self.CompanyShift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyShift">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_CompanyUser">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCompany_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="UserCompany" Type="Self.UserCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCompany">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyShift_Shift1">
+    <End Role="Shift" Type="Self.Shift" Multiplicity="0..1" />
+    <End Role="CompanyShift" Type="Self.CompanyShift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyShift">
+        <PropertyRef Name="ShiftId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeClaim_Employee1">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="EmployeeClaim" Type="Self.EmployeeClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeClaim">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeShift_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="EmployeeShift" Type="Self.EmployeeShift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeShift">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeShift_Shift">
+    <End Role="Shift" Type="Self.Shift" Multiplicity="0..1" />
+    <End Role="EmployeeShift" Type="Self.EmployeeShift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeShift">
+        <PropertyRef Name="ShiftId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShiftPrice_Shift">
+    <End Role="Shift" Type="Self.Shift" Multiplicity="0..1" />
+    <End Role="ShiftPrice" Type="Self.ShiftPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShiftPrice">
+        <PropertyRef Name="ShiftId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAnnouncement_User">
+    <End Role="Userr" Type="Self.Userr" Multiplicity="0..1" />
+    <End Role="UserAnnouncement" Type="Self.UserAnnouncement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Userr">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserAnnouncement">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCompany_Userr">
+    <End Role="Userr" Type="Self.Userr" Multiplicity="0..1" />
+    <End Role="UserCompany" Type="Self.UserCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Userr">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCompany">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_User">
+    <End Role="Userr" Type="Self.Userr" Multiplicity="0..1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Userr">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Announcements" EntityType="Self.Announcement" />
+    <EntitySet Name="ClaimHolidays" EntityType="Self.ClaimHoliday" />
+    <EntitySet Name="ClaimOthers" EntityType="Self.ClaimOther" />
+    <EntitySet Name="ClaimTypes" EntityType="Self.ClaimType" />
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+    <EntitySet Name="CompanyShifts" EntityType="Self.CompanyShift" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="EmployeeClaims" EntityType="Self.EmployeeClaim" />
+    <EntitySet Name="EmployeeShifts" EntityType="Self.EmployeeShift" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Shifts" EntityType="Self.Shift" />
+    <EntitySet Name="ShiftPrices" EntityType="Self.ShiftPrice" />
+    <EntitySet Name="UserAnnouncements" EntityType="Self.UserAnnouncement" />
+    <EntitySet Name="UserCompanies" EntityType="Self.UserCompany" />
+    <EntitySet Name="Userrs" EntityType="Self.Userr" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <AssociationSet Name="FK_UserAnnouncement_Announcement" Association="Self.FK_UserAnnouncement_Announcement">
+      <End Role="Announcement" EntitySet="Announcements" />
+      <End Role="UserAnnouncement" EntitySet="UserAnnouncements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClaimHoliday_EmployeeClaim" Association="Self.FK_ClaimHoliday_EmployeeClaim">
+      <End Role="EmployeeClaim" EntitySet="EmployeeClaims" />
+      <End Role="ClaimHoliday" EntitySet="ClaimHolidays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClaimOther_EmployeeClaim1" Association="Self.FK_ClaimOther_EmployeeClaim1">
+      <End Role="EmployeeClaim" EntitySet="EmployeeClaims" />
+      <End Role="ClaimOther" EntitySet="ClaimOthers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeClaim_Claim" Association="Self.FK_EmployeeClaim_Claim">
+      <End Role="ClaimType" EntitySet="ClaimTypes" />
+      <End Role="EmployeeClaim" EntitySet="EmployeeClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyShift_Company1" Association="Self.FK_CompanyShift_Company1">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="CompanyShift" EntitySet="CompanyShifts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Company" Association="Self.FK_Employee_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_CompanyUser" Association="Self.FK_Employee_CompanyUser">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCompany_Company" Association="Self.FK_UserCompany_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="UserCompany" EntitySet="UserCompanies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyShift_Shift1" Association="Self.FK_CompanyShift_Shift1">
+      <End Role="Shift" EntitySet="Shifts" />
+      <End Role="CompanyShift" EntitySet="CompanyShifts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeClaim_Employee1" Association="Self.FK_EmployeeClaim_Employee1">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeeClaim" EntitySet="EmployeeClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeShift_Employee" Association="Self.FK_EmployeeShift_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeShift_Shift" Association="Self.FK_EmployeeShift_Shift">
+      <End Role="Shift" EntitySet="Shifts" />
+      <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShiftPrice_Shift" Association="Self.FK_ShiftPrice_Shift">
+      <End Role="Shift" EntitySet="Shifts" />
+      <End Role="ShiftPrice" EntitySet="ShiftPrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAnnouncement_User" Association="Self.FK_UserAnnouncement_User">
+      <End Role="Userr" EntitySet="Userrs" />
+      <End Role="UserAnnouncement" EntitySet="UserAnnouncements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCompany_Userr" Association="Self.FK_UserCompany_Userr">
+      <End Role="Userr" EntitySet="Userrs" />
+      <End Role="UserCompany" EntitySet="UserCompanies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_User" Association="Self.FK_UserRole_User">
+      <End Role="Userr" EntitySet="Userrs" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <FunctionImport Name="ReturnClaimHolidayTable" IsComposable="true" ReturnType="Collection(ProjeModel.ReturnClaimHolidayTable_Result)" />
+    <FunctionImport Name="ReturnClaimOtherTable" IsComposable="true" ReturnType="Collection(ProjeModel.ReturnClaimOtherTable_Result)" />
+    <FunctionImport Name="ReturnEmployeAllWorkByCardId" IsComposable="true" ReturnType="Collection(ProjeModel.ReturnEmployeAllWorkByCardId_Result)">
+      <Parameter Name="p_cardId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ReturnEmployeeMoney" IsComposable="true" ReturnType="Collection(ProjeModel.ReturnEmployeeMoney_Result)" />
+    <FunctionImport Name="ReturnEmployeeTableByUserId" IsComposable="true" ReturnType="Collection(ProjeModel.ReturnEmployeeTableByUserId_Result)">
+      <Parameter Name="p_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetEmployeeByCardId" ReturnType="Collection(ProjeModel.GetEmployeeByCardId_Result)">
+      <Parameter Name="p_cardId" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetEmployeeByCardId_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Surname" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CompanyId" Nullable="true" />
+    <Property Type="Int32" Name="CardNumber" Nullable="true" />
+    <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

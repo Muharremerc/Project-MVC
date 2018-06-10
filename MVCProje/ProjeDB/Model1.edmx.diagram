@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1913342a3d8946c6b68fc85f515e20ef" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjeModel.Announcement" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.ClaimHoliday" Width="1.5" PointX="7.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.ClaimOther" Width="1.5" PointX="7.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.ClaimType" Width="1.5" PointX="3" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.Company" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.CompanyAnnouncement" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.CompanyShift" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.Employee" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.EmployeeClaim" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.EmployeeShift" Width="1.5" PointX="8.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.LoginEmployee" Width="1.5" PointX="5.25" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.Role" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.Shift" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.ShiftPrice" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.UserAnnouncement" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.UserCompany" Width="1.5" PointX="6" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.Userr" Width="1.5" PointX="3.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeModel.UserRole" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="ProjeModel.FK_CompanyAnnouncement_Announcement" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_UserAnnouncement_Announcement" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_ClaimHoliday_EmployeeClaim" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_ClaimOther_EmployeeClaim1" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_EmployeeClaim_Claim" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_CompanyAnnouncement_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_CompanyShift_Company1" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_Employee_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_Employee_CompanyUser" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_UserCompany_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_CompanyShift_Shift1" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_EmployeeClaim_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_EmployeeShift_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_LoginEmployee_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_EmployeeShift_Shift" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_UserRole_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_ShiftPrice_Shift" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_UserAnnouncement_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_UserCompany_Userr" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeModel.FK_UserRole_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

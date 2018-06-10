@@ -1,0 +1,202 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+    if (Session["Check"].ToString() != "User")
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+@using ProjeDB
+@model Employee
+
+
+
+<div class="row">
+    <aside class="profile-nav col-lg-3">
+        <section class="panel">
+            <div class="user-heading round">
+                <a href="#">
+                    <img src="../../Content/img/profile-avatar.jpg" alt="">
+                </a>
+                <div>
+
+
+                </div>
+                <h1>@Model.Name @Model.Surname</h1>
+                
+            </div>
+
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="/User/Index"> <i class="icon-group"></i> Return Employee</a></li>
+            </ul>
+
+        </section>
+    </aside>
+    <aside class="profile-info col-lg-9">
+       
+        <section class="panel">
+            <div class="panel-body bio-graph-info">
+                <h1>Shifth</h1>
+                <div class="row">
+                    
+
+                    <section class="panel">
+                        <header class="panel-heading no-border">
+                        </header>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Shift Name</th>
+                                    <th>Start</th>
+                                    <th>Finish</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var shift in ViewBag.Shift)
+                                {
+                                     <tr>
+                                        <td>@shift.Shift.Name</td>
+                                        <td>@shift.Start</td>
+                                        <td>@shift.Finish</td>
+                                       
+                                    </tr>
+                                }
+                               
+                            </tbody>
+                        </table>
+                    </section>
+
+
+                </div>
+                <h1>Claim</h1>
+
+
+                <div class="row">
+
+
+                    <section class="panel">
+                        <header class="panel-heading no-border"></header>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Claim Type</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var claim in ViewBag.Claim)
+                                {
+                                    foreach (var info in claim.ClaimOthers)
+                                    {
+                                    <tr>
+                                        <td>@claim.ClaimType.Name</td>
+                                        <td>@info.Details</td>
+                                    </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Claim Type</th>
+                                    <th>Start</th>
+                                    <th>Finish</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var claim in ViewBag.Claim)
+                                {
+                                    foreach (var info in claim.ClaimHolidays)
+                                    {
+                                        <tr>
+                                            <td>@claim.ClaimType.Name</td>
+                                            <td>@info.StartDate</td>
+                                            <td>@info.FinishDate</td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </section>
+
+
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+
+
+
+
+
+
+@section CompanyName
+{
+    @Session["CompanyName"]
+}
+
+@section UserName
+{
+    @Session["UserName"] @Session["UserSurname"]
+
+}
+
+@section sidebarLi
+{
+
+    <li>
+        <a href="/User/Index">
+            <i class="icon-group"></i>
+            <span>Employees</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/User/Property" class="dcjq-parent">
+            <i class="icon-cogs"></i>
+            <span>CompanyProperty</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/Announcement/Index" class="dcjq-parent">
+            <i class="icon-bell-alt"></i>
+            <span>Announcement</span>s
+        </a>
+
+    </li>
+
+    <li class="sub-menu dcjq-parent-li">
+        <a href="/CardReader/Index" class="dcjq-parent">
+            <i class="icon-credit-card"></i>
+            <span>CardReader</span>s
+        </a>
+
+    </li>
+
+<li class="sub-menu dcjq-parent-li">
+    <a href="/UserClaim/Index" class="dcjq-parent">
+        <i class="icon-check"></i>
+        <span>Claim</span>s
+    </a>
+
+</li>
+
+<li class="sub-menu dcjq-parent-li">
+    <a href="/EmployeesLog/Index" class="dcjq-parent">
+        <i class="icon-unlock"></i>
+        <span>Login</span>
+    </a>
+
+</li>
+
+
+}

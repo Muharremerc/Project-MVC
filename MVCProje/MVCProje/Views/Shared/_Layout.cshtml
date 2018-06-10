@@ -1,0 +1,121 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="../../Content/img/favicon.png">
+
+
+    <title>DATA</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../Content/css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="../../Content/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="../../Content/css/style.css" rel="stylesheet">
+    <link href="../../Content/css/style-responsive.css" rel="stylesheet" />
+    @RenderSection("css", false)
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../Content/js/html5shiv.js"></script>
+      <script src="../../Content/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <section id="container" class="">
+        <!--header start-->
+        <header class="header white-bg">
+            <div class="sidebar-toggle-box">
+                <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
+            </div>
+            <!--logo start-->
+            <a href="" class="logo">@RenderSection("CompanyName",false)<span>data</span></a>
+
+            <div class="top-nav ">
+                <ul class="nav pull-right top-menu">
+
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="../../Content/#">
+                            <img alt="" src="../../Content/img/profile-avatar.jpg" width="17%">
+
+                            
+                            <span class="username">@RenderSection("UserName",false)</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                           
+                            <li><a href="/Login/LogOut"><i class="icon-key"></i> Log Out</a></li>
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+
+
+        <aside>
+            <div id="sidebar" class="nav-collapse " tabindex="5000" style="overflow: hidden; outline: none;">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion" style="display: none;">
+                    @RenderSection("sidebarLi",false)
+
+                   <!--multi level menu end-->
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+
+
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper site-min-height">
+                <!-- page start-->
+                @RenderBody()
+                <!-- page end-->
+            </section>
+        </section>
+        <!--main content end-->
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                2018 &copy; --
+                <a href="" class="go-top">
+                    <i class="icon-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+    </section>
+
+    <script src="../../Content/js/jquery-1.8.3.min.js"></script>
+    <script src="../../Content/js/jquery.js"></script>
+    <script src="../../Content/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="../../Content/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="../../Content/js/jquery.scrollTo.min.js"></script>
+    <script src="../../Content/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="../../Content/js/respond.min.js"></script>
+
+    <!--common script for all pages-->
+    <script src="../../Content/js/common-scripts.js"></script>
+        @RenderSection("script", false)
+
+</body>
+</html>
+
+

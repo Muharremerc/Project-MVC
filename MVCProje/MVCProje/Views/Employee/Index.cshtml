@@ -1,0 +1,240 @@
+﻿@model Employee
+@{
+    ViewBag.Title = "Index";
+    if (Session["Check"].ToString() != "Emp")
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+@using ProjeDB
+
+    <aside class="profile-nav col-lg-3">
+        <section class="panel">
+            <div class="user-heading round">
+                <a href="#">
+                    <img src="../../Content/img/profile-avatar.jpg" alt="">
+                </a>
+                <div>
+
+
+                </div>
+                <h1>@Session["UserName"] @Session["UserSurname"]</h1>
+                
+            </div>
+
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="javascript:geShift()"> <i class="icon-group"></i> Shift</a></li>
+                <li><a href="javascript:getClaim()"> <i class="icon-group"></i> Claim</a></li>
+                <li><a href="javascript:getAnn()"> <i class="icon-group"></i> Ann</a></li>
+                <li><a href="javascript:getLog()"> <i class="icon-group"></i> Log</a></li>
+                <li><a href="/Employee/UpdEmployee/@Model.Id">Update</a></li>
+                
+            </ul>
+
+        </section>
+    </aside>
+    <aside class="profile-info col-lg-9">
+
+       
+
+        <div id="ClaimList">
+
+
+        </div>
+
+        <div id="ShiftList">
+            
+            </div>
+
+        <div id="AnnList">
+
+        </div>
+
+        <div id="LogList">
+
+        </div>
+</aside>
+    
+
+
+@section CompanyName
+{
+    @Session["CompanyName"]
+}
+
+@section UserName
+{
+    @Session["UserName"] @Session["UserSurname"]
+
+}
+
+
+@section script
+{
+    <script type="text/javascript">
+            /* Formating function for row details */
+            
+        
+       
+        
+    </script>
+
+    <script>
+        function geShift(deneme) {
+            $.ajax({
+                url: '@Url.Action("returnShift", "Employee")',
+             type: 'POST',
+             dataType: 'html',
+             data: {},
+             success: function (data) {
+                 $("#ClaimList").html(null);
+                 $("#AnnList").html(null);
+                 $("#LogList").html(null);
+                 $("#ShiftList").html(data);
+                 RF();
+
+
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+        }
+         function getClaim() {
+        $.ajax({
+            url: '@Url.Action("returnClaim", "Employee")',
+             type: 'POST',
+             dataType: 'html',
+             data: {},
+             success: function (data) {
+                 $("#ShiftList").html(null);
+                 $("#AnnList").html(null);
+
+                 $("#LogList").html(null);
+                 $("#ClaimList").html(data);
+
+                 RF();
+
+
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+        }
+
+        function getAnn() {
+        $.ajax({
+            url: '@Url.Action("returnAnn", "Employee")',
+             type: 'POST',
+             dataType: 'html',
+             data: {},
+             success: function (data) {
+                 $("#ClaimList").html(null);
+                 $("#ShiftList").html(null);
+
+                 $("#LogList").html(null);
+                 $("#AnnList").html(data);
+
+                 RF();
+
+
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+         }
+
+         function getLog() {
+        $.ajax({
+            url: '@Url.Action("returnLog", "Employee")',
+             type: 'POST',
+             dataType: 'html',
+             data: {},
+             success: function (data) {
+                 $("#ClaimList").html(null);
+                 $("#ShiftList").html(null);
+                 $("#AnnList").html(null);
+                 $("#LogList").html(data);
+
+                 RF();
+
+
+             },
+             error: function (hata, ajaxOptions, thrownError) {
+                 alert(hata.status);
+                 alert(thrownError);
+                 alert(hata.responseText);
+             }
+            });
+         }
+
+        function RF()
+        {
+            $(document).ready(function () {
+
+                var oTable = $("#tableList").dataTable({
+                    "aoColumnDefs": [
+                        { "bSortable": false, "aTargets": [0] }
+                    ],
+                    "aaSorting": [[1, 'asc']]
+                });
+                var oTable = $("#tableList2").dataTable({
+                    "aoColumnDefs": [
+                        { "bSortable": false, "aTargets": [0] }
+                    ],
+                    "aaSorting": [[1, 'asc']]
+                });
+
+
+            });
+        }
+
+
+        geShift();
+    </script>
+
+    <script src="../../content/js/jquery.scrollto.min.js"></script>
+    <script src="../../content/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="../../Content/js/respond.min.js"></script>
+    <script type="text/javascript" language="javascript" src="../../Content/assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    <script src="../../Content/js/common-scripts.js"></script>
+    <script class="include" type="text/javascript" src="../../Content/js/jquery.dcjqaccordion.2.7.js"></script>
+
+
+}
+
+@section css
+{
+    <link href="../../Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../Content/css/bootstrap-reset.css" rel="stylesheet">
+    <link href="../../Content/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../../Content/assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet">
+    <link href="../../Content/assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet">
+    <link href="../../Content/css/style.css" rel="stylesheet">
+
+
+}
+
+
+@section sidebarLi
+{
+
+    <li>
+        <a href="/Claim/Index">
+            <i class="icon-group"></i>
+            <span>Claim</span>s
+        </a>
+
+    </li>
+ }
+
+
+

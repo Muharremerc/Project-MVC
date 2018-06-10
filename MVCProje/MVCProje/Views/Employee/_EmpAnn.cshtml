@@ -1,0 +1,41 @@
+﻿@using ProjeDB
+@using MVCProje.Models
+@model List<AnnouncementsModel>
+
+
+<div class="row">
+
+    <section class="panel">
+        <header class="panel-heading">
+            <h1>Shifth</h1>
+        </header>
+        <div class="panel-body">
+            <div class="adv-table">
+                <table border="0" class="display table table-bordered" id="tableList">
+                    <thead>
+                        <tr>
+
+                            <th>UserName</th>
+                            <th>Title</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            foreach (var item2 in item.DetailsAndTitle)
+                            {
+                                <tr>
+                                    <td>@item.UserName.Name</td>
+                                    <td>@item2.Title</td>
+                                    <td>@item2.Details</td>
+                                </tr>
+                            }
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>

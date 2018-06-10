@@ -1,0 +1,13 @@
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\bin\Debug\ProjeDB.dll.config
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\bin\Debug\ProjeDB.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\bin\Debug\ProjeDB.pdb
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\bin\Debug\EntityFramework.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\bin\Debug\EntityFramework.xml
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\obj\Debug\ProjeDB.csproj.CoreCompileInputs.cache
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\obj\Debug\ProjeDB.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\obj\Debug\ProjeDB.pdb
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\obj\Debug\ProjeDB.csprojResolveAssemblyReference.cache
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\bin\Debug\RFID.dll
+C:\Users\Muharrem\Desktop\Proje - Kopya\MVCProje\ProjeDB\bin\Debug\RFID.pdb
